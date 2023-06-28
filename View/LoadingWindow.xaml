@@ -1,0 +1,24 @@
+﻿<Window x:Class="CafeManager3.View.LoadingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CafeManager3.View"
+        mc:Ignorable="d"
+        Title="Durger King" Height="600" Width="800"
+        MinHeight="350" MinWidth="500" Loaded="Window_Loaded">
+
+    <Window.Resources>
+        <ResourceDictionary Source="\Media\StylesLoadingWindow.xaml"/>
+    </Window.Resources>
+
+    <Grid Style="{StaticResource Style_LoginWindow_Grid}">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Image x:Name="LoadingIcon" Source="\Media\BurgerIcon.png" Grid.Row="1" Height="100" Width="130"/>
+    </Grid>
+
+</Window>
