@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Media\BurgerIcon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>

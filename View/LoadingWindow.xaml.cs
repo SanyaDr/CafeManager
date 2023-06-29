@@ -48,6 +48,5 @@ LoadingIcon.RenderTransform.ApplyAnimationClock(RotateTransform.AngleProperty, a
         {
             Close();
         }
-
     }
 }
