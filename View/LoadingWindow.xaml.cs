@@ -34,7 +34,7 @@ LoadingIcon.RenderTransform.ApplyAnimationClock(RotateTransform.AngleProperty, a
 */
         }
 
-        //Запускает таймер на 5 секунд для анимации загрузки
+        //Запускает таймер на 3 секунд для анимации загрузки
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var timer = new DispatcherTimer();

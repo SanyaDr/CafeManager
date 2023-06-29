@@ -18,7 +18,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Image x:Name="LoadingIcon" Source="\Media\BurgerIcon.png" Grid.Row="1" Height="100" Width="130"/>
+        <Image x:Name="LoadingIcon2" Source="/Media/BurgerIcon.png" Grid.Row="1" Height="100" Width="130"/>
     </Grid>
 
 </Window>
