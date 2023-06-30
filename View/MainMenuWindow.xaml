@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CafeManager3.View"
         mc:Ignorable="d"
         Title="Наше меню" Height="500" Width="850"
-        MinWidth="850" MinHeight="500">
+        MinWidth="850" MinHeight="500"
+        Icon="\Media\BurgerIcon.png">
 
     <Window.Resources>
         <ResourceDictionary Source="\Media\StylesMainWindow.xaml"/>
@@ -18,74 +19,28 @@
             <ColumnDefinition Width="3.3*"/>
         </Grid.ColumnDefinitions>
 
+            <!--Выбор FoodType-->
         <ScrollViewer Grid.Column="0" >
-            <StackPanel Background="#FFCC5D33" >
+            <StackPanel x:Name="FoodTypesStackPanel" Background="#FFCC5D33" >
+                <Button Style="{StaticResource Style_ButtonFoodType}" Margin="4 10 4 4">
+                    <TextBlock Text="Показать все" Style="{StaticResource Style_LabelsFoodType}"/>
+                </Button>
+                <Separator Background="Black" Margin="10 3" />
                 <Button Style="{StaticResource Style_ButtonFoodType}">
                     <Grid Height="73" Width="175" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2.5*"/>
                         </Grid.ColumnDefinitions>
-                        <Image Source="\Media\BurgerIcon.png" 
+                        <Image Source="\Media\BurgerIcon.png" Margin="5 0 -5 0"
                           Grid.Column="0"/>
                         <TextBlock Text="Бургеры" Style="{StaticResource Style_LabelsFoodType}"
-                           Grid.Column="1" Grid.ColumnSpan="2"/>
-                    </Grid>
-                </Button>
-                <Button Style="{StaticResource Style_ButtonFoodType}">
-                    <Grid Height="73" Width="175">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2.5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="\Media\BurgerIcon.png" 
-                          Grid.Column="0"/>
-                        <TextBlock Text="Холодные напитки" Style="{StaticResource Style_LabelsFoodType}"
-                           Grid.Column="1" Grid.ColumnSpan="2"/>
-                    </Grid>
-                </Button>
-                <Button Style="{StaticResource Style_ButtonFoodType}">
-                    <Grid Height="73" Width="175">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2.5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="\Media\BurgerIcon.png" 
-                          Grid.Column="0"/>
-                        <TextBlock Text="Холодные напитки" Style="{StaticResource Style_LabelsFoodType}"
-                           Grid.Column="1" Grid.ColumnSpan="2"/>
-                    </Grid>
-                </Button>
-                <Button Style="{StaticResource Style_ButtonFoodType}">
-                    <Grid Height="73" Width="175">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2.5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="\Media\BurgerIcon.png" 
-                          Grid.Column="0"/>
-                        <TextBlock Text="Холодные напитки" Style="{StaticResource Style_LabelsFoodType}"
-                           Grid.Column="1" Grid.ColumnSpan="2"/>
-                    </Grid>
-                </Button>
-                <Button Style="{StaticResource Style_ButtonFoodType}"/>
-                <Button Style="{StaticResource Style_ButtonFoodType}"/>
-                <Button Style="{StaticResource Style_ButtonFoodType}"/>
-                <Button Style="{StaticResource Style_ButtonFoodType}"/>
-                <Button Style="{StaticResource Style_ButtonFoodType}">
-                    <Grid Height="73" Width="175">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="2.5*"/>
-                        </Grid.ColumnDefinitions>
-                        <Image Source="\Media\BurgerIcon.png" 
-                          Grid.Column="0"/>
-                        <TextBlock Text="Холодные напитки" Style="{StaticResource Style_LabelsFoodType}"
                            Grid.Column="1" Grid.ColumnSpan="2"/>
                     </Grid>
                 </Button>
             </StackPanel>
         </ScrollViewer>
 
+        <!-- Выбор продукта-->
     </Grid>
 </Window>
