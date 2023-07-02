@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +11,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
@@ -20,18 +23,24 @@ namespace CafeManager3.View
     /// </summary>
     public partial class LoadingWindow : Window
     {
-        public LoadingWindow()
+        public LoadingWindow(ref string path)
         {
             InitializeComponent();
-            /*
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Multiselect = false;
+            ofd.Filter = "База данных SQLite |*.db";
+            ofd.ShowDialog();
+            path = ofd.FileName;
+
+            
 //Анимация которая вращает иконку на экране загрузки
-DoubleAnimation anim = new DoubleAnimation();
-anim.From = 0;
-anim.To = 500;
-anim.Duration = TimeSpan.FromSeconds(3);
-LoadingIcon.RenderTransform = new TranslateTransform(50, 50);
-LoadingIcon.RenderTransform.ApplyAnimationClock(RotateTransform.AngleProperty, anim);
-*/
+//DoubleAnimation anim = new DoubleAnimation();
+//anim.From = 0;
+//anim.To = 500;
+//anim.Duration = TimeSpan.FromSeconds(3);
+//LoadingIcon.RenderTransform = new TranslateTransform(50, 50);
+//LoadingIcon.RenderTransform.ApplyAnimationClock(RotateTransform.AngleProperty, anim);
+
         }
 
         //Запускает таймер на 3 секунд для анимации загрузки

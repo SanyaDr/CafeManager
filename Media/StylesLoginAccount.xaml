@@ -11,6 +11,16 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style x:Key="Style_LoginWindow_StackPanel" TargetType="StackPanel">
+        <Setter Property="Background">
+            <Setter.Value>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FFCC5D33" Offset="1"/>
+                    <GradientStop Color="DarkOrange"/>
+                </RadialGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
     <Style x:Key="DefaultStyle_AuthButtons" TargetType="Button">
         <Setter Property="Height" Value="67"/>
         <Setter Property="MaxWidth" Value="150"/>
@@ -30,6 +40,14 @@
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="FontWeight" Value="SemiBold"/>
         <Setter Property="ToolTip" Value="Введите свой номер телефона!"/>
+    </Style>
+    <Style x:Key="Style_AddLabels" TargetType="Label" BasedOn="{StaticResource Style_Labels}">
+        <Style.Resources >
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="15"/>
+            </Style>
+        </Style.Resources>
+
     </Style>
     <Style x:Key="Style_TextBox" TargetType="TextBox">
         <Setter Property="Background" Value="AliceBlue"/>
@@ -97,5 +115,11 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="Syle_Registration_WelcomeLabel" TargetType="Label">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="22"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
 
 </ResourceDictionary>

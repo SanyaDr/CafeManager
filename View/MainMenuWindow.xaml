@@ -19,8 +19,8 @@
             <ColumnDefinition Width="3.3*"/>
         </Grid.ColumnDefinitions>
 
-            <!--Выбор FoodType-->
-        <ScrollViewer Grid.Column="0" >
+        <!--Выбор FoodType-->
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
             <StackPanel x:Name="FoodTypesStackPanel" Background="#FFCC5D33" >
                 <Button Style="{StaticResource Style_ButtonFoodType}" Margin="4 10 4 4">
                     <TextBlock Text="Показать все" Style="{StaticResource Style_LabelsFoodType}"/>
@@ -42,5 +42,44 @@
         </ScrollViewer>
 
         <!-- Выбор продукта-->
+        <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" >
+            <StackPanel>
+                <StackPanel  Height="35">
+                    <Label x:Name="Label_UserName" Content="Приветствуем, User!" 
+                           FontWeight="SemiBold" FontSize="17"/>
+                </StackPanel>
+                <Border Height="2" Margin="2" Background="Black"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                    <Button Height="80" Width="140"  Margin="10"/>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

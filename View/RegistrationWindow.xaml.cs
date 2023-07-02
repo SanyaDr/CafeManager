@@ -1,5 +1,4 @@
-﻿using CafeManager3.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,21 +15,24 @@ using System.Windows.Shapes;
 namespace CafeManager3.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainMenuWindow.xaml
+    /// Логика взаимодействия для RegistrationWindow.xaml
     /// </summary>
-    public partial class MainMenuWindow : Window
+    public partial class RegistrationWindow : Window
     {
-        Account curUser;
-        public MainMenuWindow(Account curUser)
+        public RegistrationWindow(string input)
         {
             InitializeComponent();
-            this.curUser = curUser;
-            GetName();
+            Input_TelefonNumber.Text = input;
         }
 
-        public void GetName()
+        private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
-            Label_UserName.Content = $"Приветствуем, {curUser.Name}!";
+            Close();
+        }
+
+        private void Button_Register_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

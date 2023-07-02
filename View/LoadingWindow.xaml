@@ -12,7 +12,7 @@
         <ResourceDictionary Source="\Media\StylesLoadingWindow.xaml"/>
     </Window.Resources>
 
-    <Grid Style="{StaticResource Style_LoginWindow_Grid}">
+    <Grid Style="{StaticResource Style_LoginWindow_Grid}" Cursor="AppStarting">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>

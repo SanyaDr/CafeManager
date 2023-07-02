@@ -28,15 +28,22 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
+        <Label Content="Войдите в аккаунт" Style="{StaticResource Style_AddLabels}"
+               Background="OrangeRed" Margin="0 25" 
+               Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" 
+               BorderThickness="2"
+                BorderBrush="White"/>
         <Label Content="Телефон:" Style="{StaticResource Style_Labels}"
                Grid.Row="1" Grid.Column="1"/>
-        <TextBox Style="{StaticResource Style_TextBox}"
+        <TextBox x:Name="TextBox_Input" Style="{StaticResource Style_TextBox}"
             Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
-        <Button Content="Войти" Style="{StaticResource Style_ButtonLogIn}"
-                Grid.Row="2" Grid.Column="2"/>
-        <Button Content="Отмена"  Style="{StaticResource Style_ButtonCancel}"
-                Grid.Row="2" Grid.Column="3"/>
-
+        <Button x:Name="Button_LogIn" Content="Войти" Style="{StaticResource Style_ButtonLogIn}"
+                Grid.Row="2" Grid.Column="2" Click="Button_LogIn_Click" Cursor="Hand"/>
+        <Button x:Name="Button_Cancel" Content="Отмена"  Style="{StaticResource Style_ButtonCancel}"
+                Grid.Row="2" Grid.Column="3" Click="Button_Click" Cursor="Hand"/>
+        <Button Content="Войти как Гость.." Background="#0000" HorizontalAlignment="Center" Margin="0 15" Foreground="Blue" FontSize="10"
+                Height="25"
+               Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2" Cursor="Help" Click="LoginAsGuest"/>
 
     </Grid>
 
