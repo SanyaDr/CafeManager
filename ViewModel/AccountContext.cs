@@ -1,5 +1,6 @@
 ﻿using CafeManager3.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,15 @@ namespace CafeManager3.ViewModel
         {
             optionsBuilder.UseSqlite($"Data Source={path}");
             optionsBuilder.UseLazyLoadingProxies();
+        }
+
+        public void CreateNewAccount(string name, string number)
+        {
+            Account newUser = new Account();
+            newUser.mobileNumber = number;
+            newUser.Name = name;
+            Account.Add(newUser);
+            SaveChanges();
         }
 
     }

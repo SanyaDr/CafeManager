@@ -24,13 +24,28 @@ namespace CafeManager3.View
         public MainMenuWindow(Account curUser)
         {
             InitializeComponent();
-            this.curUser = curUser;
-            GetName();
+            if (curUser != null)
+            {
+                this.curUser = curUser;
+                GetName();
+            }
+            else
+            {
+                MessageBox.Show("Ошибка! Активный пользователь не считан!");
+                Close();
+            }
+
         }
 
         public void GetName()
         {
             Label_UserName.Content = $"Приветствуем, {curUser.Name}!";
+        }
+
+        private void Button_ExitFromAccount_Click(object sender, RoutedEventArgs e)
+        {
+            curUser = null;
+            Close();
         }
     }
 }

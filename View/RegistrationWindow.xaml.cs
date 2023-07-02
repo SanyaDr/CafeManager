@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CafeManager3.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +20,12 @@ namespace CafeManager3.View
     /// </summary>
     public partial class RegistrationWindow : Window
     {
-        public RegistrationWindow(string input)
+        AccountContext accountContext;
+        public RegistrationWindow(string input, AccountContext context)
         {
             InitializeComponent();
             Input_TelefonNumber.Text = input;
+            accountContext = context;
         }
 
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
@@ -32,7 +35,8 @@ namespace CafeManager3.View
 
         private void Button_Register_Click(object sender, RoutedEventArgs e)
         {
-
+            accountContext.CreateNewAccount(Input_Name.Text, Input_TelefonNumber.Text);
+            Close();
         }
     }
 }

@@ -21,7 +21,6 @@ namespace CafeManager3.View
     public partial class LoginAccountWindow : Window
     {
         private readonly AccountContext accountContext;
-        private List<Account> users;
         string path = string.Empty;
 
         LoadingWindow loading;
@@ -49,7 +48,7 @@ namespace CafeManager3.View
             accountContext = new AccountContext(path);
             accountContext.Account.Load();
 
-            users = accountContext.Account.AsQueryable().ToList();
+            
         }
 
         /// <summary>
@@ -64,6 +63,8 @@ namespace CafeManager3.View
             var inp = TextBox_Input.Text;
             Account confirm = null;
             bool found = false;
+            List<Account> users = accountContext.Account.AsQueryable().ToList();
+
             foreach(var user in users)
             {
                 if(user.mobileNumber == inp)
@@ -76,8 +77,9 @@ namespace CafeManager3.View
             if(found)
             {
                 main = new MainMenuWindow(confirm);
-                Close();
+                Hide();
                 main.Show();
+                Show();
             }
             else
             {
@@ -85,8 +87,10 @@ namespace CafeManager3.View
                     MessageBoxButton.YesNo, MessageBoxImage.Warning);
                 if(AskNewAcc == MessageBoxResult.Yes)
                 {
-                    RegistrationWindow regNew = new RegistrationWindow(inp);
-                    var res = regNew.ShowDialog();                    
+                    RegistrationWindow regNew = new RegistrationWindow(inp, accountContext);
+                    var res = regNew.ShowDialog();
+                    accountContext.Account.Load();
+
                 }
             }
         }

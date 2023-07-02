@@ -26,8 +26,8 @@
             <TextBox x:Name="Input_TelefonNumber" Width="350" Style="{StaticResource Style_TextBox}"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 15 0 30">
-            <Label x:Name="Input_Name" Content="Как к вам обращатся?" Style="{StaticResource Style_Labels}" ToolTip="Введите ваше имя!"/>
-            <TextBox Width="350" Style="{StaticResource Style_TextBox}" ToolTip="Введите ваше имя!"/>
+            <Label Content="Как к вам обращатся?" Style="{StaticResource Style_Labels}" ToolTip="Введите ваше имя!"/>
+            <TextBox x:Name="Input_Name" Width="350" Style="{StaticResource Style_TextBox}" ToolTip="Введите ваше имя!"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 15 0 30">
             <Button x:Name="Button_Register" Content="Регистрация" Style="{StaticResource Style_ButtonLogIn}" Width="120" Click="Button_Register_Click"/>
