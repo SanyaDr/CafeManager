@@ -21,12 +21,13 @@
 
         <!--Выбор FoodType-->
         <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
+            
             <StackPanel x:Name="FoodTypesStackPanel" Background="#FFCC5D33" >
                 <Button Style="{StaticResource Style_ButtonFoodType}" Margin="4 10 4 4">
                     <TextBlock Text="Показать все" Style="{StaticResource Style_LabelsFoodType}"/>
                 </Button>
                 <Separator Background="Black" Margin="10 3" />
-                <Button Style="{StaticResource Style_ButtonFoodType}">
+                <!--<Button Style="{StaticResource Style_ButtonFoodType}">
                     <Grid Height="73" Width="175" >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
@@ -37,12 +38,13 @@
                         <TextBlock Text="Бургеры" Style="{StaticResource Style_LabelsFoodType}"
                            Grid.Column="1" Grid.ColumnSpan="2"/>
                     </Grid>
-                </Button>
+                </Button>-->
             </StackPanel>
         </ScrollViewer>
 
         <!-- Выбор продукта-->
         <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Hidden" >
+            
             <StackPanel x:Name="StackPanel_AllFood">
                 <Grid Height="35">
                     <Grid.ColumnDefinitions>
@@ -57,36 +59,12 @@
 
                 </Grid>
                 <Border Height="2" Margin="2" Background="Black"/>
-                <StackPanel Orientation="Horizontal">
+                <!--<StackPanel Orientation="Horizontal">
                     <Button Height="80" Width="140"  Margin="10"/>
                     <Button Height="80" Width="140"  Margin="10"/>
                     <Button Height="80" Width="140"  Margin="10"/>
                     <Button Height="80" Width="140"  Margin="10"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                </StackPanel>
+                </StackPanel>-->
             </StackPanel>
         </ScrollViewer>
     </Grid>

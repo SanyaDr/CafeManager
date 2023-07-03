@@ -76,9 +76,9 @@ namespace CafeManager3.View
             }
             if(found)
             {
-                main = new MainMenuWindow(confirm);
+                main = new MainMenuWindow(path, confirm);
                 Hide();
-                main.Show();
+                main.ShowDialog();
                 Show();
             }
             else
@@ -105,7 +105,7 @@ namespace CafeManager3.View
             Account guest =  new Account();
             guest.Name = "Гость";
             guest.mobileNumber = "+71234567890";
-            main = new MainMenuWindow(guest);
+            main = new MainMenuWindow(path, guest);
             Close();
             main.Show();
         }

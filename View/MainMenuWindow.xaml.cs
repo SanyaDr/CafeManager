@@ -1,4 +1,6 @@
 ﻿using CafeManager3.Models;
+using CafeManager3.ViewModel;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +22,10 @@ namespace CafeManager3.View
     /// </summary>
     public partial class MainMenuWindow : Window
     {
-        Account curUser;
-        public MainMenuWindow(Account curUser)
+        public readonly FoodTypesContext foodContext = null!;
+        Account curUser = null!;
+        public List<FoodTypes> allTypes = new List<FoodTypes>();
+        public MainMenuWindow(string path, Account curUser)
         {
             InitializeComponent();
             if (curUser != null)
@@ -34,6 +38,9 @@ namespace CafeManager3.View
                 MessageBox.Show("Ошибка! Активный пользователь не считан!");
                 Close();
             }
+            foodContext = new FoodTypesContext(path);
+            foodContext.foodTypes.Load();
+            allTypes.AddRange(foodContext.foodTypes.AsQueryable()/*.ToList()*/);
 
         }
 
