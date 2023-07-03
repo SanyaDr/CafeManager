@@ -6,7 +6,9 @@ using System.IO;
 using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
-using 
+using System.Windows.Media;
+using static System.Net.Mime.MediaTypeNames;
+using System.Windows.Media.Imaging;
 
 namespace CafeManager3.View
 {
@@ -56,7 +58,7 @@ namespace CafeManager3.View
                 myGrid.ColumnDefinitions.Add(column1);
                 myGrid.ColumnDefinitions.Add(column2);
 
-                Image myImage = new Image();
+                System.Windows.Controls.Image myImage = new System.Windows.Controls.Image();
                 myImage.Margin = new Thickness(5, 0, -5, 0);
                 Grid.SetColumn(myImage, 0);
 
@@ -74,15 +76,23 @@ namespace CafeManager3.View
 
                 /* ТУТА */
 
-                using (var ms = new MemoryStream(type.Icon))
+
+                if (type.Icon != null)
                 {
-                    myImage = ;
+                    var bitmapImage = new BitmapImage();
+                    using (var memoryStream = new MemoryStream(type.Icon))
+                    {
+                        bitmapImage.BeginInit();
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.StreamSource = memoryStream;
+                        bitmapImage.EndInit();
+                    }
 
+                    myImage.Source = bitmapImage;
                 }
-
                 /* ТУТА */
                 myTextBlock.Text = type.Title;
-                FoodTypesStackPanel.Children.Add(myImage);
+                FoodTypesStackPanel.Children.Add(myButton);
             }          
         }
 
