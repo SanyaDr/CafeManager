@@ -37,24 +37,44 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
 
-    <!--<Style x:Key="Style_Grid" TargetType="Grid">
-        <Setter Property="Height" Value="73"/>
-        <Setter Property="Width" Value="175"/>
+    <Style x:Key="Style_LabelsItems" TargetType="TextBlock">
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="TextWrapping" Value="WrapWithOverflow"/>
+    </Style>
+    <Style x:Key="Style_LabelPrice" TargetType="TextBlock" BasedOn="{StaticResource Style_LabelsItems}">
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+
+    <Style x:Key="Style_ButtonItem" TargetType="Button">
+        <Setter Property="Background" Value="#d9d9d9"/>
+        <Setter Property="Height" Value="185"/>
+        <Setter Property="Margin" Value="10"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border BorderBrush="Brown" BorderThickness="2.5" Background="{TemplateBinding Background}">
+                        <ContentPresenter
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
         <Style.Resources>
-            <Style TargetType="ColumnDefinition">
-                <Setter Property=""
+            <Style TargetType="Border">
+                <Setter Property="CornerRadius" Value="8"/>
             </Style>
         </Style.Resources>
-        --><!--<Grid Height="73" Width="175" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2.5*"/>
-            </Grid.ColumnDefinitions>
-            <Image Source="\Media\BurgerIcon.png" Margin="5 0 -5 0"
-                          Grid.Column="0"/>
-            <TextBlock Text="Бургеры" Style="{StaticResource Style_LabelsFoodType}"
-                           Grid.Column="1" Grid.ColumnSpan="2"/>
-        </Grid>--><!--
-    </Style>-->
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="DarkOrange"/>
+                <Setter Property="Height" Value="195"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 
 </ResourceDictionary>

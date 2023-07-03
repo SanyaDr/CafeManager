@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using Microsoft.EntityFrameworkCore.Sqlite.Query.Internal;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -23,15 +24,19 @@ namespace CafeManager3.View
     /// </summary>
     public partial class LoadingWindow : Window
     {
+        DispatcherTimer timer = new DispatcherTimer();
+
         public LoadingWindow(ref string path)
         {
             InitializeComponent();
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Multiselect = false;
-            ofd.Filter = "База данных SQLite |*.db";
-            ofd.ShowDialog();
-            path = ofd.FileName;
-
+            if (path == null || path == string.Empty)
+            {
+                OpenFileDialog ofd = new OpenFileDialog();
+                ofd.Multiselect = false;
+                ofd.Filter = "База данных SQLite |*.db";
+                ofd.ShowDialog();
+                path = ofd.FileName;
+            }
             
 //Анимация которая вращает иконку на экране загрузки
 //DoubleAnimation anim = new DoubleAnimation();
@@ -46,7 +51,6 @@ namespace CafeManager3.View
         //Запускает таймер на 3 секунд для анимации загрузки
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            var timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(3);
             timer.Tick += TimerTick;
             timer.Start();
@@ -55,6 +59,7 @@ namespace CafeManager3.View
         //Срабатывает после конца таймера
         private void TimerTick(object sender, EventArgs e)
         {
+            timer.Stop();
             Close();
         }
     }

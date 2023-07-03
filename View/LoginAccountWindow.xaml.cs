@@ -29,6 +29,8 @@ namespace CafeManager3.View
         {
             InitializeComponent();
 
+            path = @"Media\CafeSet.db";
+
             loading = new LoadingWindow(ref path);
             while(path == null || path.Length == 0 || !path.EndsWith(".db"))
             {
@@ -44,9 +46,37 @@ namespace CafeManager3.View
             }
             loading.ShowDialog();
             loading.Close();
-            
-            accountContext = new AccountContext(path);
-            accountContext.Account.Load();
+
+            try
+            {
+                accountContext = new AccountContext(path);
+                accountContext.Account.Load();
+            }
+            catch (Exception ex)
+            {
+                var res =MessageBox.Show("Ошибка базы данных!\nВозможно она не найдена, проверьте её наличие в папке с фалом приложения и перезапустите приложение" +
+                    "\nВыбрать базу вручную?", "База данных не найдена", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                if (res == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        path = null;
+                        loading = new LoadingWindow(ref path);
+                        accountContext = new AccountContext(path);
+                        accountContext.Account.Load();
+                    }
+                    catch (Exception ex2)
+                    {
+                        MessageBox.Show("Все равно не удаётся открыть файл. Проверьте базу данных и её наличие\nЗатем пожалуйста перезапустите приложение\n\nТекст ошибки:\n" + ex2.Message, "Проблема загрузки базы данных",
+                            MessageBoxButton.OK, MessageBoxImage.Error);
+                        Application.Current.Shutdown();
+                    }
+                }
+                else
+                {
+                    Application.Current.Shutdown();
+                }
+            }
         }
 
         /// <summary>
@@ -104,8 +134,9 @@ namespace CafeManager3.View
             guest.Name = "Гость";
             guest.mobileNumber = "+71234567890";
             main = new MainMenuWindow(path, guest);
-            Close();
-            main.Show();
+            Hide();
+            main.ShowDialog();
+            Show();
         }
     }
 }

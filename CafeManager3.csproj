@@ -24,4 +24,10 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Media\CafeSet.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

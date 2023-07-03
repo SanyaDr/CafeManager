@@ -1,8 +1,10 @@
 ﻿using CafeManager3.Models;
 using CafeManager3.ViewModel;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
@@ -105,7 +107,71 @@ namespace CafeManager3.View
         }
         public void LoadItems()
         {
+            List<CafeManager3.Models.MenuItem> items = new List<CafeManager3.Models.MenuItem>();
+            items.AddRange(itemsContext.menuItem.AsQueryable().ToList());
 
+            WrapPanel wrapPanel = new WrapPanel();
+            wrapPanel.Orientation = Orientation.Horizontal;
+
+            foreach (var item in items)
+            {
+                Button myButton = new Button();
+                myButton.Width = 150;
+                myButton.Style = (Style)this.FindResource("Style_ButtonItem");
+
+                Grid buttonGrid = new Grid();
+                buttonGrid.Height = 180;
+                buttonGrid.Width = 150;
+
+                RowDefinition rowDefinition1 = new RowDefinition();
+                rowDefinition1.Height = new GridLength(2, GridUnitType.Star);
+                RowDefinition rowDefinition2 = new RowDefinition();
+                rowDefinition2.Height = new GridLength(1, GridUnitType.Star);
+
+                buttonGrid.RowDefinitions.Add(rowDefinition1);
+                buttonGrid.RowDefinitions.Add(rowDefinition2);
+
+                Image image = new Image();
+                image.Margin = new Thickness(13);
+                Grid.SetRow(image, 0);
+
+                StackPanel stackPanel = new StackPanel();
+                stackPanel.Orientation = Orientation.Vertical;
+                Grid.SetRow(stackPanel, 1);
+
+                TextBlock textName = new TextBlock();
+                textName.Style = (Style)this.FindResource("Style_LabelsItems");
+
+                TextBlock textPrice = new TextBlock();
+                textPrice.Style = (Style)this.FindResource("Style_LabelPrice");
+
+                textName.Text = item.Title;
+                textPrice.Text = item.Price.ToString();
+                if (item.Icon != null)
+                {
+                    var bitmapImage = new BitmapImage();
+                    using (var memoryStream = new MemoryStream(item.Icon))
+                    {
+                        bitmapImage.BeginInit();
+                        bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmapImage.StreamSource = memoryStream;
+                        bitmapImage.EndInit();
+                    }
+                    image.Source = bitmapImage;
+                }
+
+                stackPanel.Children.Add(textName);
+                stackPanel.Children.Add(textPrice);
+
+                buttonGrid.Children.Add(image);
+                buttonGrid.Children.Add(stackPanel);
+
+                myButton.Content = buttonGrid;
+
+                wrapPanel.Children.Add(myButton);
+
+            }
+            StackPanel_AllFood.Children.Add(wrapPanel);
         }
 
         private void MyButton_Click(object sender, RoutedEventArgs e)
@@ -120,6 +186,7 @@ namespace CafeManager3.View
             {
                 text = string.Empty;
                 //Сразу вывод всех
+                LoadItems();
 
             }
             itemsContext.ShowByType(text);

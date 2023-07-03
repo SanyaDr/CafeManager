@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeManager3.View"
         mc:Ignorable="d"
-        Title="Наше меню" Height="500" Width="850"
-        MinWidth="850" MinHeight="500"
+        Title="Наше меню" Height="500" Width="910"
+        MinWidth="910" MinHeight="500"
         Icon="\Media\BurgerIcon.png">
 
     <Window.Resources>
@@ -59,12 +59,41 @@
 
                 </Grid>
                 <Border Height="2" Margin="2" Background="Black"/>
-                <!--<StackPanel Orientation="Horizontal">
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
-                    <Button Height="80" Width="140"  Margin="10"/>
+
+                <!--<WrapPanel Orientation="Horizontal">
+                    <Button x:Name="myButton" Width="150" Style="{StaticResource Style_ButtonItem}">
+                        <Grid Height="180" Width="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="\Media\BurgerIcon.png" Margin="13"
+                                   Grid.Row="0"/>
+                            <StackPanel Orientation="Vertical" Grid.Row="1">
+                                <TextBlock Text="Бургер Чили Чиз" Style="{StaticResource Style_LabelsItems}"/>
+                                <TextBlock Text="200 рублей" Style="{StaticResource Style_LabelPrice}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
+                </WrapPanel>-->
+                
+                <!--<StackPanel x:Name="myStackPanel" Height="215" Orientation="Horizontal">
+                    <Button x:Name="myButton" Width="150" Style="{StaticResource Style_ButtonItem}">
+                        <Grid Height="180" Width="150">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="\Media\BurgerIcon.png" Margin="13"
+                                   Grid.Row="0"/>
+                            <StackPanel Orientation="Vertical" Grid.Row="1">
+                                <Label Content="Бургер Чили Чиз" Style="{StaticResource Style_LabelsItems}"/>
+                                <Label Content="200 рублей" Style="{StaticResource Style_LabelPrice}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Button>
                 </StackPanel>-->
+                
             </StackPanel>
         </ScrollViewer>
     </Grid>
