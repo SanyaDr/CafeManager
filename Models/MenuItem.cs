@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -13,10 +14,10 @@ namespace CafeManager3.Models
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
         public int FoodTypeId { get; set; }
-        public string Price { get; set; } = null!;
+        public double Price { get; set; }
         public string Ingredients { get; set; } = null!;
         public int Weight { get; set; }
         public int Calories { get; set; }
-        public Blob Icon { get; set; }
+        public byte[]? Icon { get; set; }
     }
 }

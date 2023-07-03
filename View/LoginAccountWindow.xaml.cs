@@ -47,8 +47,6 @@ namespace CafeManager3.View
             
             accountContext = new AccountContext(path);
             accountContext.Account.Load();
-
-            
         }
 
         /// <summary>

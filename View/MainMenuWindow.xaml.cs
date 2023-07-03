@@ -3,13 +3,9 @@ using CafeManager3.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.IO;
-using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media;
-using static System.Net.Mime.MediaTypeNames;
 using System.Windows.Media.Imaging;
-using System;
 
 namespace CafeManager3.View
 {
@@ -19,6 +15,7 @@ namespace CafeManager3.View
     public partial class MainMenuWindow : Window
     {
         public readonly FoodTypesContext foodContext = null!;
+        public readonly MenuItemsContext itemsContext = null!;
         Account curUser = null!;
         public List<FoodTypes> allTypes = new List<FoodTypes>();
         public MainMenuWindow(string path, Account curUser)
@@ -37,6 +34,9 @@ namespace CafeManager3.View
             foodContext = new FoodTypesContext(path);
             foodContext.foodTypes.Load();
             allTypes.AddRange(foodContext.foodTypes.AsQueryable()/*.ToList()*/);
+
+            itemsContext = new MenuItemsContext(path);
+            itemsContext.menuItem.Load();
 
             LoadTypes();
 
@@ -103,6 +103,10 @@ namespace CafeManager3.View
                 FoodTypesStackPanel.Children.Add(myButton);
             }          
         }
+        public void LoadItems()
+        {
+
+        }
 
         private void MyButton_Click(object sender, RoutedEventArgs e)
         {
@@ -117,21 +121,9 @@ namespace CafeManager3.View
                 text = string.Empty;
                 //Сразу вывод всех
 
-
-                /*
-                try
-                {
-                    TextBlock t = (TextBlock)clButt.Content;
-                    text = t.Text;
-                }
-                catch (Exception ex)
-                {
-                    text = string.Empty;
-                    MessageBox.Show(ex.Message);
-                }
-                */
             }
-            MessageBox.Show(text, text);
+            itemsContext.ShowByType(text);
+            //MessageBox.Show(text, text);
         }
 
         public void GetName()
