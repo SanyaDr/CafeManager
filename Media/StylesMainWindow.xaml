@@ -36,5 +36,25 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
-    
+
+    <!--<Style x:Key="Style_Grid" TargetType="Grid">
+        <Setter Property="Height" Value="73"/>
+        <Setter Property="Width" Value="175"/>
+        <Style.Resources>
+            <Style TargetType="ColumnDefinition">
+                <Setter Property=""
+            </Style>
+        </Style.Resources>
+        --><!--<Grid Height="73" Width="175" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2.5*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="\Media\BurgerIcon.png" Margin="5 0 -5 0"
+                          Grid.Column="0"/>
+            <TextBlock Text="Бургеры" Style="{StaticResource Style_LabelsFoodType}"
+                           Grid.Column="1" Grid.ColumnSpan="2"/>
+        </Grid>--><!--
+    </Style>-->
+
 </ResourceDictionary>

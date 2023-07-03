@@ -1,19 +1,12 @@
 ﻿using CafeManager3.Models;
 using CafeManager3.ViewModel;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Drawing;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using 
 
 namespace CafeManager3.View
 {
@@ -42,6 +35,63 @@ namespace CafeManager3.View
             foodContext.foodTypes.Load();
             allTypes.AddRange(foodContext.foodTypes.AsQueryable()/*.ToList()*/);
 
+            LoadTypes();
+        }
+
+        public void LoadTypes()
+        {
+            foreach (var type in allTypes)
+            {
+                Button myButton = new Button();
+                myButton.Style = (Style)FindResource("Style_ButtonFoodType");
+
+                Grid myGrid = new Grid();
+                myGrid.Height = 73;
+                myGrid.Width = 175;
+
+                ColumnDefinition column1 = new ColumnDefinition();
+                column1.Width = new GridLength(1, GridUnitType.Star);
+                ColumnDefinition column2 = new ColumnDefinition();
+                column2.Width = new GridLength(2.5, GridUnitType.Star);
+                myGrid.ColumnDefinitions.Add(column1);
+                myGrid.ColumnDefinitions.Add(column2);
+
+                Image myImage = new Image();
+                myImage.Margin = new Thickness(5, 0, -5, 0);
+                Grid.SetColumn(myImage, 0);
+
+                TextBlock myTextBlock = new TextBlock();
+
+                myTextBlock.Style = (Style)FindResource("Style_LabelsFoodType");
+                Grid.SetColumn(myTextBlock, 1);
+                Grid.SetColumnSpan(myTextBlock, 2);
+
+                myGrid.Children.Add(myImage);
+                myGrid.Children.Add(myTextBlock);
+
+                myButton.Content = myGrid;
+                myButton.Click += MyButton_Click;
+
+                /* ТУТА */
+
+                using (var ms = new MemoryStream(type.Icon))
+                {
+                    myImage = ;
+
+                }
+
+                /* ТУТА */
+                myTextBlock.Text = type.Title;
+                FoodTypesStackPanel.Children.Add(myImage);
+            }          
+        }
+
+        private void MyButton_Click(object sender, RoutedEventArgs e)
+        {
+            Button clButt = (Button)sender;
+            string text = ((TextBlock)((Grid)clButt.Content).Children[1]).Text;
+
+            MessageBox.Show(text, text);
         }
 
         public void GetName()
