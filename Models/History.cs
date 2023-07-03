@@ -9,7 +9,7 @@ namespace CafeManager3.Models
     public class History
     {
         public int AccountId { set; get; }
-        public string Date { set; get; }
+        public string Date { set; get; } = null!;
         public double amount { set; get; }
     }
 }

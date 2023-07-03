@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using static System.Net.Mime.MediaTypeNames;
 using System.Windows.Media.Imaging;
+using System;
 
 namespace CafeManager3.View
 {
@@ -38,6 +39,13 @@ namespace CafeManager3.View
             allTypes.AddRange(foodContext.foodTypes.AsQueryable()/*.ToList()*/);
 
             LoadTypes();
+
+            Loaded += MainMenuWindow_Loaded;
+        }
+
+        private void MainMenuWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            MyButton_Click(Button_ShowAllTypes, new RoutedEventArgs());
         }
 
         public void LoadTypes()
@@ -75,8 +83,7 @@ namespace CafeManager3.View
                 myButton.Click += MyButton_Click;
 
                 /* ТУТА */
-
-
+                //Получение Blob, иконки из базы данных
                 if (type.Icon != null)
                 {
                     var bitmapImage = new BitmapImage();
@@ -91,6 +98,7 @@ namespace CafeManager3.View
                     myImage.Source = bitmapImage;
                 }
                 /* ТУТА */
+                //Получение названия группы еды
                 myTextBlock.Text = type.Title;
                 FoodTypesStackPanel.Children.Add(myButton);
             }          
@@ -99,8 +107,30 @@ namespace CafeManager3.View
         private void MyButton_Click(object sender, RoutedEventArgs e)
         {
             Button clButt = (Button)sender;
-            string text = ((TextBlock)((Grid)clButt.Content).Children[1]).Text;
+            string text;
+            try
+            {
+                text = ((TextBlock)((Grid)clButt.Content).Children[1]).Text;
+            }
+            catch
+            {
+                text = string.Empty;
+                //Сразу вывод всех
 
+
+                /*
+                try
+                {
+                    TextBlock t = (TextBlock)clButt.Content;
+                    text = t.Text;
+                }
+                catch (Exception ex)
+                {
+                    text = string.Empty;
+                    MessageBox.Show(ex.Message);
+                }
+                */
+            }
             MessageBox.Show(text, text);
         }
 

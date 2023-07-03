@@ -10,11 +10,11 @@ namespace CafeManager3.Models
     public class MenuItem
     {
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
+        public string Title { get; set; } = null!;
+        public string Description { get; set; } = null!;
         public int FoodTypeId { get; set; }
-        public string Price { get; set; }
-        public string Ingredients { get; set; }
+        public string Price { get; set; } = null!;
+        public string Ingredients { get; set; } = null!;
         public int Weight { get; set; }
         public int Calories { get; set; }
         public Blob Icon { get; set; }
