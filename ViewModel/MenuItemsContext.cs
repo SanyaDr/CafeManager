@@ -34,7 +34,7 @@ namespace CafeManager3.ViewModel
             }
             else
             {
-                string query = $"SELECT I.iD, I.Title, I.[Description], I.FoodTypeId, I.Price, I.Ingredients, I.[Weight], I.Calories, I.Icon FROM FoodTypes AS F, MenuItem AS I WHERE F.Title = {typeName} AND F.id = I.FoodTypeId";
+                string query = $"SELECT I.iD, I.Title, I.[Description], I.FoodTypeId, I.Price, I.Ingredients, I.[Weight], I.Calories, I.Icon FROM FoodTypes AS F, MenuItem AS I WHERE F.Title = '{typeName}' AND F.id = I.FoodTypeId";
                 items = new List<MenuItem>();
                 using (SQLiteConnection conn = new SQLiteConnection(($"Data Source={path};")))
                 {
