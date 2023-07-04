@@ -79,13 +79,6 @@ namespace CafeManager3.View
             }
         }
 
-        /// <summary>
-        /// Возвращает true если номера совпадают (с учетом начала номера на +7 и 8)
-        /// </summary>
-        /// <param name="num1"></param>
-        /// <param name="num2"></param>
-        /// <returns></returns>
-
         private void Button_LogIn_Click(object sender, RoutedEventArgs e)
         {
             var inp = TextBox_Input.Text;

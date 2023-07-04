@@ -12,4 +12,33 @@
         </Setter>
     </Style>
 
+    <Style x:Key="spinner" TargetType="Image">
+        <Setter Property="Source" Value="/Media/BurgerIcon.png"/>
+        <Setter Property="Height" Value="24"/>
+        <Setter Property="RenderTransform">
+            <Setter.Value>
+                <RotateTransform CenterX="65" CenterY="65"/>
+            </Setter.Value>
+        </Setter>
+
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="True">
+                <Trigger.EnterActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation
+                                Storyboard.TargetProperty="RenderTransform.Angle"
+                                From="0" To="360"
+                                Duration="0:0:1"
+                                RepeatBehavior="Forever"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
+    
+    <Style x:Key="Image_Rotate" TargetType="Image">
+    </Style>
 </ResourceDictionary>

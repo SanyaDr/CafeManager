@@ -11,6 +11,7 @@
     <Window.Resources>
         <ResourceDictionary Source="\Media\StylesLoadingWindow.xaml"/>
     </Window.Resources>
+    
 
     <Grid Style="{StaticResource Style_LoginWindow_Grid}" Cursor="AppStarting">
         <Grid.RowDefinitions>
@@ -18,7 +19,7 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Image x:Name="LoadingIcon2" Source="/Media/BurgerIcon.png" Grid.Row="1" Height="100" Width="130"/>
+        <Image x:Name="LoadingIcon2" Grid.Row="1" Height="100" Width="130" Style="{StaticResource spinner}"/>
     </Grid>
 
 </Window>

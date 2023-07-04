@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeManager3.View"
         mc:Ignorable="d"
-        Title="Регистрация нового пользователя" Height="450" Width="800">
+        Title="Регистрация нового пользователя" Height="450" Width="750"
+        MinHeight="400" MinWidth="600">
 
     <Window.Resources>
         <ResourceDictionary Source="\Media\StylesLoginAccount.xaml"/>
@@ -29,6 +30,8 @@
             <Label Content="Как к вам обращатся?" Style="{StaticResource Style_Labels}" ToolTip="Введите ваше имя!"/>
             <TextBox x:Name="Input_Name" Width="350" Style="{StaticResource Style_TextBox}" ToolTip="Введите ваше имя!"/>
         </StackPanel>
+        <TextBlock Text="Внимание, формат вводимых данных важен! Рекомендуется ввод телефона в формете +71234567890"
+                  HorizontalAlignment="Center" Foreground="White" FontSize="12" Margin="2"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 15 0 30">
             <Button x:Name="Button_Register" Content="Регистрация" Style="{StaticResource Style_ButtonLogIn}" Width="120" Click="Button_Register_Click"/>
             <Button x:Name="Button_Cancel" Content="Отмена" Style="{StaticResource Style_ButtonCancel}" Width="120" Click="Button_Cancel_Click"/>

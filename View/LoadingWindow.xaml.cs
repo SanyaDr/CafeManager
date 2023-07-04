@@ -37,15 +37,6 @@ namespace CafeManager3.View
                 ofd.ShowDialog();
                 path = ofd.FileName;
             }
-            
-//Анимация которая вращает иконку на экране загрузки
-//DoubleAnimation anim = new DoubleAnimation();
-//anim.From = 0;
-//anim.To = 500;
-//anim.Duration = TimeSpan.FromSeconds(3);
-//LoadingIcon.RenderTransform = new TranslateTransform(50, 50);
-//LoadingIcon.RenderTransform.ApplyAnimationClock(RotateTransform.AngleProperty, anim);
-
         }
 
         //Запускает таймер на 3 секунд для анимации загрузки
