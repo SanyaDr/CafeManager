@@ -20,12 +20,19 @@ using System.Windows.Threading;
 namespace CafeManager3.View
 {
     /// <summary>
-    /// Логика взаимодействия для LoadingWindow.xaml
+    /// Загрузочный экран
     /// </summary>
     public partial class LoadingWindow : Window
     {
+        /// <summary>
+        /// Таймер для отсчета времени загрузки. (имитирует загрузку приложения - по умолчанию 3 секунды)
+        /// </summary>
         DispatcherTimer timer = new DispatcherTimer();
 
+        /// <summary>
+        /// Загрузочный экран
+        /// </summary>
+        /// <param name="path">Путь к базе данных</param>
         public LoadingWindow(ref string path)
         {
             InitializeComponent();
@@ -39,7 +46,9 @@ namespace CafeManager3.View
             }
         }
 
-        //Запускает таймер на 3 секунд для анимации загрузки
+        /// <summary>
+        ///Запускает таймер на 3 секунд для анимации загрузки
+        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             timer.Interval = TimeSpan.FromSeconds(3);
@@ -47,7 +56,9 @@ namespace CafeManager3.View
             timer.Start();
         }
 
-        //Срабатывает после конца таймера
+        /// <summary>
+        ///Срабатывает после конца таймера
+        /// </summary>
         private void TimerTick(object sender, EventArgs e)
         {
             timer.Stop();

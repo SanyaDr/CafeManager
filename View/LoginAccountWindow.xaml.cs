@@ -18,13 +18,29 @@ using System.Windows.Shapes;
 
 namespace CafeManager3.View
 {
+    /// <summary>
+    /// Окно входа в аккаунт
+    /// </summary>
     public partial class LoginAccountWindow : Window
     {
+        /// <summary>
+        /// Контекст аккаунтов для бд
+        /// </summary>
         private readonly AccountContext accountContext;
+        /// <summary>
+        /// Путь к БД
+        /// </summary>
         string path = string.Empty;
 
+        /// <summary>
+        /// Загрузочный экран
+        /// </summary>
         LoadingWindow loading;
+        /// <summary>
+        /// Главное меню приложения
+        /// </summary>
         MainMenuWindow main;
+
         public LoginAccountWindow()
         {
             InitializeComponent();
@@ -77,8 +93,33 @@ namespace CafeManager3.View
                     Application.Current.Shutdown();
                 }
             }
+            Closing += LoginAccountWindow_Closing;
         }
 
+
+        private void LoginAccountWindow_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            //var res = MessageBox.Show("Вы точно хотите выйти?", "Закрытие приложения",
+            //    MessageBoxButton.YesNo, MessageBoxImage.Question);
+            //if (res == MessageBoxResult.No)
+            //{
+            //    e.Cancel = true;
+            //}
+            //else
+            //{
+
+                MessageBox.Show("Работу выполнил:\n\tДровосеков Александр Александрович\n\tВПД111", "Автор",
+        MessageBoxButton.OK, MessageBoxImage.Asterisk);
+
+
+            //    e.Cancel = false;
+            //}
+        }
+
+        /// <summary>
+        /// Обработка нажатия на кнопку входа в аккаунт.
+        /// Ищет совпадения по номеру телефона, если есть совпадение то вход успешен, иначе предлагает зарегистрироваться
+        /// </summary>
         private void Button_LogIn_Click(object sender, RoutedEventArgs e)
         {
             var inp = TextBox_Input.Text;
@@ -116,11 +157,17 @@ namespace CafeManager3.View
             }
         }
 
+        /// <summary>
+        /// Выход из приложения
+        /// </summary>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Войти как гость. Гостевой режим, без сохранения истории и скучной авторизации
+        /// </summary>
         private void LoginAsGuest(object sender, RoutedEventArgs e)
         {
             Account guest =  new Account();

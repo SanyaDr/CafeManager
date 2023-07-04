@@ -58,6 +58,7 @@
                     </Grid.ColumnDefinitions>
                     <Label x:Name="Label_UserName" Content="Приветствуем, User!" 
                            FontWeight="SemiBold" FontSize="17" Grid.Column="0" Grid.ColumnSpan="3"/>
+                    <Button x:Name="Button_Author" Grid.Column="2" Content="Автор" Margin="30 2" Click="Button_Author_Click"/>
                     <Button x:Name="Button_ExitFromAccount" Content="Выйти из аккаунта" Grid.Column="3" Margin="10 2" Click="Button_ExitFromAccount_Click" />
 
                 </Grid>

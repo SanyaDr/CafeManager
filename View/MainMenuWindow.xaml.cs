@@ -13,16 +13,39 @@ using System.Windows.Media.Imaging;
 namespace CafeManager3.View
 {
     /// <summary>
-    /// Логика взаимодействия для MainMenuWindow.xaml
+    /// Главное меню прложения. Откуда мы делаем заказы, выбираем товары и многое другое)
     /// </summary>
     public partial class MainMenuWindow : Window
     {
+        /// <summary>
+        /// Контекст БД категорий еды
+        /// </summary>
         public readonly FoodTypesContext foodContext = null!;
+        /// <summary>
+        /// Контекст БД товаров
+        /// </summary>
         public readonly MenuItemsContext itemsContext = null!;
+        /// <summary>
+        /// Наша корзина
+        /// </summary>
         public Cart cart;
+        /// <summary>
+        /// Текущий, активный пользователь
+        /// </summary>
         Account curUser = null!;
+        /// <summary>
+        /// Список всех загруженных категорий еды
+        /// </summary>
         public List<FoodTypes> allTypes = new List<FoodTypes>();
+        /// <summary>
+        /// Путь к БД
+        /// </summary>
         private string path;
+        /// <summary>
+        /// Главное меню приложения
+        /// </summary>
+        /// <param name="path">Путь к БД</param>
+        /// <param name="curUser">Объект текущего пользователя</param>
         public MainMenuWindow(string path, Account curUser)
         {
             InitializeComponent();
@@ -51,11 +74,17 @@ namespace CafeManager3.View
             cart = new Cart();
         }
 
+        /// <summary>
+        /// Выполняет стартовую загрузку и вывод товаров на экран
+        /// </summary>
         private void MainMenuWindow_Loaded(object sender, RoutedEventArgs e)
         {
             ButtonTypes_Click(Button_ShowAllTypes, new RoutedEventArgs());
         }
 
+        /// <summary>
+        /// Загрузка категорий
+        /// </summary>
         public void LoadTypes()
         {
             foreach (var type in allTypes)
@@ -111,6 +140,10 @@ namespace CafeManager3.View
                 FoodTypesStackPanel.Children.Add(myButton);
             }          
         }
+        /// <summary>
+        /// Загрузка товаров выбранных в категории
+        /// </summary>
+        /// <param name="items">Выводит на экран список товаров выбранной категории</param>
         public void LoadItems(List<CafeManager3.Models.MenuItem> items)
         {
             WrapPanel wrapPanel = new WrapPanel();
@@ -183,6 +216,9 @@ namespace CafeManager3.View
             StackPanel_AllFood.Children.Add(wrapPanel);
         }
 
+        /// <summary>
+        /// Обработка нажатия на одну из категорий
+        /// </summary>
         private void ButtonItems_Click(object sender, RoutedEventArgs e)
         {
             Button clButt = (Button)sender;
@@ -199,6 +235,9 @@ namespace CafeManager3.View
             info.ShowDialog();
         }
 
+        /// <summary>
+        /// Обработка нажатия на один из товаров
+        /// </summary>
         private void ButtonTypes_Click(object sender, RoutedEventArgs e)
         {
             Button clButt = (Button)sender;
@@ -217,23 +256,38 @@ namespace CafeManager3.View
             //MessageBox.Show(text, text);
         }
 
+        /// <summary>
+        /// Вывод имени пользователя на экран
+        /// </summary>
         public void GetName()
         {
             Label_UserName.Content = $"Приветствуем, {curUser.Name}!";
         }
 
+        /// <summary>
+        /// Выход из аккаунта. Вызывается окно входа в аккаунт
+        /// </summary>
         private void Button_ExitFromAccount_Click(object sender, RoutedEventArgs e)
         {
             curUser = null;
             Close();
         }
 
+        /// <summary>
+        /// Обработка кнопки оплаты
+        /// </summary>
         private void Button_Cheque_Click(object sender, RoutedEventArgs e)
         {
             PaymentWindow payWindow = new PaymentWindow(ref cart, path, curUser);
             Hide();
             payWindow.ShowDialog();
             ShowDialog();
+        }
+
+        private void Button_Author_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Работу выполнил:\n\tДровосеков Александр Александрович\n\tВПД111\n", "Автор",
+                MessageBoxButton.OK, MessageBoxImage.Asterisk);
         }
     }
 }

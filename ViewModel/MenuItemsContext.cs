@@ -8,10 +8,21 @@ using System.Windows.Media.Imaging;
 
 namespace CafeManager3.ViewModel
 {
+    /// <summary>
+    /// Контекст для товаров
+    /// </summary>
     public class MenuItemsContext : DbContext
     {
+        /// <summary>
+        /// Путь к БД
+        /// </summary>
         private string path;
         public DbSet<MenuItem> menuItem { get; set; }
+        /// <summary>
+        /// Контекст для товаров
+        /// </summary>
+        /// <param name="path">Путь к БД</param>
+        /// <param name="foodTypesContext">Контекст категорий</param>
         public MenuItemsContext(string path, FoodTypesContext foodTypesContext)
         {
             this.path = path;
@@ -23,6 +34,11 @@ namespace CafeManager3.ViewModel
             optionsBuilder.UseLazyLoadingProxies();
         }
 
+        /// <summary>
+        /// Вывод товаров по выбранной категории
+        /// </summary>
+        /// <param name="typeName">Имя категории</param>
+        /// <returns>Список товаров выбранной категории</returns>
         public List<MenuItem> ShowByType(string typeName)
         {
             List<MenuItem> items = null!;

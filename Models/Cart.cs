@@ -66,7 +66,9 @@ namespace CafeManager3.Models
         {
             return items.Count;
         }
-        //Очистка корзины
+        /// <summary>
+        /// Очистка корзины
+        /// </summary>
         public void Clear()
         {
             items.Clear();

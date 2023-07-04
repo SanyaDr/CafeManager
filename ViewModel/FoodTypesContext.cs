@@ -13,8 +13,15 @@ namespace CafeManager3.ViewModel
     ///</summary>
     public class FoodTypesContext:DbContext
     {
+        /// <summary>
+        /// Путь к БД
+        /// </summary>
         private string path;
         public DbSet<FoodTypes> foodTypes {  get; set; }
+        /// <summary>
+        /// Контекст категорий еды
+        /// </summary>
+        /// <param name="path">Путь к БД</param>
         public FoodTypesContext(string path)
         {
             this.path = path;
@@ -25,6 +32,5 @@ namespace CafeManager3.ViewModel
             optionsBuilder.UseSqlite($"Data Source={path}");
             optionsBuilder.UseLazyLoadingProxies();
         }
-
     }
 }

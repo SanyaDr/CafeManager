@@ -16,11 +16,19 @@ using System.Windows.Shapes;
 namespace CafeManager3.View
 {
     /// <summary>
-    /// Логика взаимодействия для RegistrationWindow.xaml
+    /// Окно регистрации нового аккаунта
     /// </summary>
     public partial class RegistrationWindow : Window
     {
+        /// <summary>
+        /// Контекст БД аккаунтов
+        /// </summary>
         AccountContext accountContext;
+        /// <summary>
+        /// Регистрация нового пользователя
+        /// </summary>
+        /// <param name="input">Номер телефона введеный при попытке входа</param>
+        /// <param name="context">Контекст аккаунтов</param>
         public RegistrationWindow(string input, AccountContext context)
         {
             InitializeComponent();
@@ -28,11 +36,17 @@ namespace CafeManager3.View
             accountContext = context;
         }
 
+        /// <summary>
+        /// Отмена регистрации
+        /// </summary>
         private void Button_Cancel_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// Регистрация
+        /// </summary>
         private void Button_Register_Click(object sender, RoutedEventArgs e)
         {
             if (Input_Name.Text != string.Empty && Input_TelefonNumber.Text != string.Empty)

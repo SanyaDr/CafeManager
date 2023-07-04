@@ -8,8 +8,15 @@ namespace CafeManager3.ViewModel
     /// </summary>
     public class AccountContext: DbContext
     {
+        /// <summary>
+        /// Путь к БД
+        /// </summary>
         private string path;
         public DbSet<Account> Account { get; set; }
+        /// <summary>
+        /// Контекст аккаунтов
+        /// </summary>
+        /// <param name="path">Путь к БД</param>
         public AccountContext(string path)
         {
             this.path = path;
@@ -21,6 +28,11 @@ namespace CafeManager3.ViewModel
             optionsBuilder.UseLazyLoadingProxies();
         }
 
+        /// <summary>
+        /// Создание нового аккаута
+        /// </summary>
+        /// <param name="name">Имя пользователя</param>
+        /// <param name="number">Номер телефона</param>
         public void CreateNewAccount(string name, string number)
         {
             Account newUser = new Account();

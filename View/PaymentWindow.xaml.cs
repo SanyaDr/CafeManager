@@ -9,14 +9,32 @@ using System.Windows.Media.Imaging;
 namespace CafeManager3.View
 {
     /// <summary>
-    /// Логика взаимодействия для PaymentWindow.xaml
+    /// Окно оплаты выбранных товаров
     /// </summary>
     public partial class PaymentWindow : Window
     {
+        /// <summary>
+        /// Наша корзина
+        /// </summary>
         private Cart cart;
+        /// <summary>
+        /// Текущий пользователь
+        /// </summary>
         private Account account;
+        /// <summary>
+        /// Контекст БД истории покупок
+        /// </summary>
         public HistoryContext historyContext;
+        /// <summary>
+        /// Путь к БД
+        /// </summary>
         private string path;
+        /// <summary>
+        /// Окно оплаты выбранных товаров
+        /// </summary>
+        /// <param name="cart">Класс корзины для покупок</param>
+        /// <param name="dataBasePath">Путь к БД</param>
+        /// <param name="currentUser">Текущий пользователь</param>
         public PaymentWindow(ref Cart cart, string dataBasePath, Account currentUser)
         {
             InitializeComponent();
@@ -27,6 +45,9 @@ namespace CafeManager3.View
             Button_Pay.Click += Button_Pay_Click;
         }
 
+        /// <summary>
+        /// Обработка кнопки оплаты
+        /// </summary>
         private void Button_Pay_Click(object sender, RoutedEventArgs e)
         {
             PaymentTransactions payment = new PaymentTransactions();
@@ -54,6 +75,12 @@ namespace CafeManager3.View
             }
         }
 
+        /// <summary>
+        /// Вывод на экран элемента в чеке
+        /// </summary>
+        /// <param name="item">Выбранный товар</param>
+        /// <param name="num">Его Идентификатор (просто порядковый номер в чеке)</param>
+        /// <returns></returns>
         private Border DrowItem(CafeManager3.Models.MenuItem item, int num)  
         {
             Border border = new Border();
@@ -119,6 +146,11 @@ namespace CafeManager3.View
             return border;
         }
 
+        /// <summary>
+        /// Обработка кнопки удаления товара из корзина и чека
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DelButton_Click(object sender, RoutedEventArgs e)
         {
             Button clButt = (Button)sender;
@@ -131,7 +163,10 @@ namespace CafeManager3.View
             StackPanel_Cheque.Children.Clear();
             PaymentWindow_Loaded(sender, e);
         }
-
+        
+        /// <summary>
+        /// Отрисовка чека после загрузки окна
+        /// </summary>
         private void PaymentWindow_Loaded(object sender, RoutedEventArgs e)
         {
             CheckCountItemsInCart();

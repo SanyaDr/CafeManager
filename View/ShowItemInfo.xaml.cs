@@ -11,20 +11,32 @@ using CafeManager3.Models;
 namespace CafeManager3.View
 {
     /// <summary>
-    /// Логика взаимодействия для ShowItemInfo.xaml
+    /// Окно показа информации по товару. Вызывается при клике на товар с главного окна
     /// </summary>
     public partial class ShowItemInfo : Window
     {
+        /// <summary>
+        /// Выбранный товар
+        /// </summary>
         private CafeManager3.Models.MenuItem selected;
-        Image itemImage;
+
+        /// <summary>
+        /// Наша корзина
+        /// </summary>
         Cart cart;
-        public ShowItemInfo(string name, List<CafeManager3.Models.MenuItem> items, Cart cart)
+        /// <summary>
+        /// Окно показа информации по товару. Вызывается при клике на товар с главного окна
+        /// </summary>
+        /// <param name="Title">Название товара</param>
+        /// <param name="items">Список всех товаров. В дальнейшем идет поиск по названию для загрузки дополнительной информации</param>
+        /// <param name="cart">Корзина покупок</param>
+        public ShowItemInfo(string Title, List<CafeManager3.Models.MenuItem> items, Cart cart)
         {
             InitializeComponent();
             this.cart = cart;
-            if (name != null && name != string.Empty)
+            if (Title != null && Title != string.Empty)
             {
-                selected = items.SingleOrDefault(i => i.Title == name);
+                selected = items.SingleOrDefault(i => i.Title == Title);
             }
             else
             {
@@ -55,6 +67,9 @@ namespace CafeManager3.View
             Button_Description_Click(null, null);
         }
 
+        /// <summary>
+        /// Кнопка добавления в корзину
+        /// </summary>
         private void Button_ToCart_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -68,16 +83,23 @@ namespace CafeManager3.View
             }
         }
 
+        /// <summary>
+        /// Кнопка вывод состава товара
+        /// </summary>
         private void Button_Consist_Click(object sender, RoutedEventArgs e)
         {
             TextBlock_Info.Text = "Состав: " + selected.Ingredients;
         }
-
+        /// <summary>
+        /// Кнопка вывода описания товара
+        /// </summary>
         private void Button_Description_Click(object sender, RoutedEventArgs e)
         {
             TextBlock_Info.Text = selected.Description;
         }
-
+        /// <summary>
+        /// Кнопка уменьшения количества выбранного товара
+        /// </summary>
         private void Button_Remove_Click(object sender, RoutedEventArgs e)
         {
             int count = 0;
@@ -89,18 +111,17 @@ namespace CafeManager3.View
             }
             TextBlock_Count.Text = count.ToString();
         }
-
+        /// <summary>
+        /// Кнопка добавления еще одного выбранного товара
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Button_Add_Click(object sender, RoutedEventArgs e)
         {
             int count = 0;
             int.TryParse(TextBlock_Count.Text, out count);
             count++;
             TextBlock_Count.Text = count.ToString();
-        }
-
-        public Image GetImage()
-        {
-            return null;
         }
     }
 }

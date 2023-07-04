@@ -5,13 +5,31 @@ using System;
 
 namespace CafeManager3.ViewModel
 {
+    /// <summary>
+    /// Контекст для истории покупок
+    /// </summary>
     public class HistoryContext:DbContext
     {
+        /// <summary>
+        /// Путь к БД
+        /// </summary>
         private string path;
+        /// <summary>
+        /// Наша корзина
+        /// </summary>
         private Cart cart;
+        /// <summary>
+        /// Аккаунт
+        /// </summary>
         private Account account;
         public DbSet<History> History { get; set; }
 
+        /// <summary>
+        /// Контекст для истории покупок
+        /// </summary>
+        /// <param name="path">Путь к БД</param>
+        /// <param name="cart">Корзина</param>
+        /// <param name="account">Текущий пользователь</param>
         public HistoryContext(string path, Cart cart, Account account)
         {
             this.path = path;
@@ -25,6 +43,9 @@ namespace CafeManager3.ViewModel
             optionsBuilder.UseLazyLoadingProxies();
         }
 
+        /// <summary>
+        /// Добавление истории в БД
+        /// </summary>
         public void AddNewHistory()
         {
             //Проверка на гостя
