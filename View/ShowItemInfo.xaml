@@ -5,9 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeManager3.View"
         mc:Ignorable="d"
-        Title="ShowItemInfo" Height="700" Width="700"
+        Title="О товаре" Height="700" Width="700"
         MinHeight="700" MinWidth="700"
-        MaxHeight="850" MaxWidth="850">
+        MaxHeight="850" MaxWidth="850"
+        Icon="\Media\BurgerIcon.png">
 
     <Window.Resources>
         <ResourceDictionary Source="\Media\StylesMainWindow.xaml"/>
@@ -39,15 +40,13 @@
 
         <Border Grid.Row="2" Grid.Column="3" CornerRadius="15" Background="Black" Margin="5 35">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Button x:Name="Button_Add" Content="+" Background="#0000" Width="50" Margin="10 0" Foreground="White" FontSize="30" />
+                <Button x:Name="Button_Add" Content="+" Style="{StaticResource Style_ChangeCount}"/>
                 <TextBlock x:Name="TextBlock_Count" Text="1" Foreground="White" VerticalAlignment="Center" FontSize="20" Margin="10"/>
-                <Button x:Name="Button_Remove" Content="-" Background="#0000" Width="50" Margin="10 0" Foreground="White" FontSize="30" />
+                <Button x:Name="Button_Remove" Content="-" Style="{StaticResource Style_ChangeCount}"/>
             </StackPanel>
         </Border>
-        <Button x:Name="Button_ToCart" 
-                Background="Red" Margin="5 25" 
-                Content="В корзину!" Foreground="White" FontSize="16"
-                FontWeight="Bold"
+        <Button x:Name="Button_ToCart" Style="{StaticResource Style_AddToCart}"
+                Content="В корзину!"
                  Grid.Column="4" Grid.Row="2" />
         <StackPanel Orientation="Horizontal" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" HorizontalAlignment="Center">
             <Button x:Name="Button_Description" Style="{StaticResource Style_ButtonSelectedItem}"
@@ -56,9 +55,11 @@
             <Button x:Name="Button_Consist" Style="{StaticResource Style_ButtonSelectedItem}"
                 Content="Состав"/>
         </StackPanel>
-        <TextBlock x:Name="TextBlock_Info" Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2" 
+        <ScrollViewer VerticalScrollBarVisibility="Hidden"  Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="2" Grid.RowSpan="2" >
+            <TextBlock x:Name="TextBlock_Info"
                    Margin="5" TextWrapping="Wrap"
                    FontSize="15"
                   />
+        </ScrollViewer>
     </Grid>
 </Window>

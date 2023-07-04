@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CafeManager3.View"
         mc:Ignorable="d"
         Title="Durger King" Height="600" Width="800"
-        MinHeight="350" MinWidth="500" Loaded="Window_Loaded">
+        MinHeight="350" MinWidth="500" Loaded="Window_Loaded"
+        Icon="\Media\BurgerIcon.png">
 
     <Window.Resources>
         <ResourceDictionary Source="\Media\StylesLoadingWindow.xaml"/>

@@ -35,8 +35,16 @@ namespace CafeManager3.View
 
         private void Button_Register_Click(object sender, RoutedEventArgs e)
         {
-            accountContext.CreateNewAccount(Input_Name.Text, Input_TelefonNumber.Text);
-            Close();
+            if (Input_Name.Text != string.Empty && Input_TelefonNumber.Text != string.Empty)
+            {
+                accountContext.CreateNewAccount(Input_Name.Text, Input_TelefonNumber.Text);
+                Close();
+            }
+            else
+            {
+                MessageBox.Show("Нельзя оставить поля пустыми, им одиноко!", "Одно из полей пустое",
+                    MessageBoxButton.OK, MessageBoxImage.Asterisk);
+            }
         }
     }
 }

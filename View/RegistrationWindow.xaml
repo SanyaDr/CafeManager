@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CafeManager3.View"
         mc:Ignorable="d"
         Title="Регистрация нового пользователя" Height="450" Width="750"
-        MinHeight="400" MinWidth="600">
+        MinHeight="400" MinWidth="600"
+        Icon="\Media\BurgerIcon.png">
 
     <Window.Resources>
         <ResourceDictionary Source="\Media\StylesLoginAccount.xaml"/>

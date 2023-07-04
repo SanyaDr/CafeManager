@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CafeManager3.View"
         mc:Ignorable="d"
-        Title="PaymentWindow" Height="500" Width="800"
-        MinWidth="650" MinHeight="500">
+        Title="Оплата заказа" Height="500" Width="800"
+        MinWidth="650" MinHeight="500"
+        Icon="\Media\BurgerIcon.png">
 
     <Window.Resources>
         <ResourceDictionary Source="\Media\StylesPayment.xaml"/>

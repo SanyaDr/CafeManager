@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:CafeManager3.View"
         mc:Ignorable="d"
         Title="Вход в аккаунт" Height="450" Width="600"
-        MinHeight="425" MinWidth="580">
+        MinHeight="425" MinWidth="580"
+        Icon="\Media\BurgerIcon.png">
 
     <Window.Resources>
         <ResourceDictionary Source="\Media\StylesLoginAccount.xaml"/>

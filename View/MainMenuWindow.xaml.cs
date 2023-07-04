@@ -150,7 +150,7 @@ namespace CafeManager3.View
                 textPrice.Style = (Style)this.FindResource("Style_LabelPrice");
 
                 textName.Text = item.Title;
-                textPrice.Text = item.Price.ToString();
+                textPrice.Text = item.Price.ToString() + " руб";
                 if (item.Icon != null)
                 {
                     var bitmapImage = new BitmapImage();
