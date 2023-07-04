@@ -37,7 +37,7 @@ namespace CafeManager3.View
             foodContext.foodTypes.Load();
             allTypes.AddRange(foodContext.foodTypes.AsQueryable()/*.ToList()*/);
 
-            itemsContext = new MenuItemsContext(path);
+            itemsContext = new MenuItemsContext(path, foodContext);
             itemsContext.menuItem.Load();
 
             LoadTypes();
@@ -105,13 +105,11 @@ namespace CafeManager3.View
                 FoodTypesStackPanel.Children.Add(myButton);
             }          
         }
-        public void LoadItems()
+        public void LoadItems(List<CafeManager3.Models.MenuItem> items)
         {
-            List<CafeManager3.Models.MenuItem> items = new List<CafeManager3.Models.MenuItem>();
-            items.AddRange(itemsContext.menuItem.AsQueryable().ToList());
-
             WrapPanel wrapPanel = new WrapPanel();
             wrapPanel.Orientation = Orientation.Horizontal;
+            wrapPanel.Name = "myWrapPanel";
 
             foreach (var item in items)
             {
@@ -171,6 +169,10 @@ namespace CafeManager3.View
                 wrapPanel.Children.Add(myButton);
 
             }
+            while (StackPanel_AllFood.Children.Count > 2)
+            {
+                StackPanel_AllFood.Children.RemoveAt(2);
+            }
             StackPanel_AllFood.Children.Add(wrapPanel);
         }
 
@@ -186,10 +188,9 @@ namespace CafeManager3.View
             {
                 text = string.Empty;
                 //Сразу вывод всех
-                LoadItems();
-
             }
-            itemsContext.ShowByType(text);
+            LoadItems(itemsContext.ShowByType(text));
+
             //MessageBox.Show(text, text);
         }
 
