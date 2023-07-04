@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 
 namespace CafeManager3.View
@@ -21,9 +22,11 @@ namespace CafeManager3.View
         public Cart cart;
         Account curUser = null!;
         public List<FoodTypes> allTypes = new List<FoodTypes>();
+        private string path;
         public MainMenuWindow(string path, Account curUser)
         {
             InitializeComponent();
+            this.path = path;
             if (curUser != null)
             {
                 this.curUser = curUser;
@@ -227,7 +230,10 @@ namespace CafeManager3.View
 
         private void Button_Cheque_Click(object sender, RoutedEventArgs e)
         {
-
+            PaymentWindow payWindow = new PaymentWindow(ref cart, path, curUser);
+            Hide();
+            payWindow.ShowDialog();
+            ShowDialog();
         }
     }
 }

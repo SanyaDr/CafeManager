@@ -32,6 +32,8 @@ namespace CafeManager3.View
                 return;
             }
 
+            TextBlock_ItemName.Text = selected.Title;
+
             if (selected.Icon != null)
             {
                 var bitmapImage = new BitmapImage();
@@ -58,6 +60,7 @@ namespace CafeManager3.View
             try
             {
                 cart.AddToCart(selected, int.Parse(TextBlock_Count.Text));
+                Close();
             }
             catch (Exception ex)
             {

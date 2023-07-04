@@ -52,7 +52,7 @@ namespace CafeManager3.ViewModel
                                 item.Title = reader.GetString(1);
                                 item.Description = reader.GetString(2);
                                 item.FoodTypeId = reader.GetInt32(3);
-                                item.Price = reader.GetDouble(4);
+                                item.Price = reader.GetInt32(4);
                                 item.Ingredients = reader.GetString(5);
                                 item.Weight = reader.GetInt32(6);
                                 item.Calories = reader.GetInt32(7);

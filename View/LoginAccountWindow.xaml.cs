@@ -133,6 +133,7 @@ namespace CafeManager3.View
             Account guest =  new Account();
             guest.Name = "Гость";
             guest.mobileNumber = "+71234567890";
+            guest.Id = -99;
             main = new MainMenuWindow(path, guest);
             Hide();
             main.ShowDialog();

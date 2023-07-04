@@ -6,7 +6,7 @@
         public string Title { get; set; } = null!;
         public string Description { get; set; } = null!;
         public int FoodTypeId { get; set; }
-        public double Price { get; set; }
+        public int Price { get; set; }
         public string Ingredients { get; set; } = null!;
         public int Weight { get; set; }
         public int Calories { get; set; }
