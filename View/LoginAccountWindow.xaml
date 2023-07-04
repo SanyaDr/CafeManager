@@ -39,7 +39,7 @@
             Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
         <Button x:Name="Button_LogIn" Content="Войти" Style="{StaticResource Style_ButtonLogIn}"
                 Grid.Row="2" Grid.Column="2" Click="Button_LogIn_Click" Cursor="Hand"/>
-        <Button x:Name="Button_Cancel" Content="Отмена"  Style="{StaticResource Style_ButtonCancel}"
+        <Button x:Name="Button_Cancel" Content="Выход"  Style="{StaticResource Style_ButtonCancel}"
                 Grid.Row="2" Grid.Column="3" Click="Button_Click" Cursor="Hand"/>
         <Button Content="Войти как Гость.." Background="#0000" HorizontalAlignment="Center" Margin="0 15" Foreground="Blue" FontSize="10"
                 Height="25"

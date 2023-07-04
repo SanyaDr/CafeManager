@@ -18,6 +18,7 @@ namespace CafeManager3.View
     {
         public readonly FoodTypesContext foodContext = null!;
         public readonly MenuItemsContext itemsContext = null!;
+        public Cart cart;
         Account curUser = null!;
         public List<FoodTypes> allTypes = new List<FoodTypes>();
         public MainMenuWindow(string path, Account curUser)
@@ -43,11 +44,13 @@ namespace CafeManager3.View
             LoadTypes();
 
             Loaded += MainMenuWindow_Loaded;
+
+            cart = new Cart();
         }
 
         private void MainMenuWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            MyButton_Click(Button_ShowAllTypes, new RoutedEventArgs());
+            ButtonTypes_Click(Button_ShowAllTypes, new RoutedEventArgs());
         }
 
         public void LoadTypes()
@@ -82,7 +85,7 @@ namespace CafeManager3.View
                 myGrid.Children.Add(myTextBlock);
 
                 myButton.Content = myGrid;
-                myButton.Click += MyButton_Click;
+                myButton.Click += ButtonTypes_Click;
 
                 /* ТУТА */
                 //Получение Blob, иконки из базы данных
@@ -166,6 +169,7 @@ namespace CafeManager3.View
 
                 myButton.Content = buttonGrid;
 
+                myButton.Click += ButtonItems_Click;
                 wrapPanel.Children.Add(myButton);
 
             }
@@ -176,7 +180,23 @@ namespace CafeManager3.View
             StackPanel_AllFood.Children.Add(wrapPanel);
         }
 
-        private void MyButton_Click(object sender, RoutedEventArgs e)
+        private void ButtonItems_Click(object sender, RoutedEventArgs e)
+        {
+            Button clButt = (Button)sender;
+            string nameItem = string.Empty;
+            try
+            {
+                nameItem = ((TextBlock)((StackPanel)((Grid)clButt.Content).Children[1]).Children[0]).Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            ShowItemInfo info = new ShowItemInfo(nameItem, itemsContext.ShowByType(string.Empty), cart);
+            info.ShowDialog();
+        }
+
+        private void ButtonTypes_Click(object sender, RoutedEventArgs e)
         {
             Button clButt = (Button)sender;
             string text;
@@ -203,6 +223,11 @@ namespace CafeManager3.View
         {
             curUser = null;
             Close();
+        }
+
+        private void Button_Cheque_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

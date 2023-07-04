@@ -77,4 +77,18 @@
         </Style.Triggers>
     </Style>
 
+    <Style x:Key="Style_ButtonSelectedItem" TargetType="Button">
+        <Setter Property="Background" Value="#0000"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="Gray"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Margin" Value="10"/>
+        <Style.Resources>
+            <Style TargetType="Border">
+                <Setter Property="BorderBrush" Value="#0000"/>
+                <Setter Property="IsEnabled" Value="False"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+
 </ResourceDictionary>

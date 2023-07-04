@@ -23,8 +23,11 @@
         <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Hidden">
             
             <StackPanel x:Name="FoodTypesStackPanel" Background="#FFCC5D33" >
-                <Button x:Name="Button_ShowAllTypes" Style="{StaticResource Style_ButtonFoodType}" Margin="4 10 4 4" Click="MyButton_Click">
+                <Button x:Name="Button_ShowAllTypes" Style="{StaticResource Style_ButtonFoodType}" Margin="4 10 4 4" Click="ButtonTypes_Click">
                     <TextBlock Text="Показать все" Style="{StaticResource Style_LabelsFoodType}"/>
+                </Button>
+                <Button x:Name="Button_Cheque" Style="{StaticResource Style_ButtonFoodType}" Margin="4 10 4 4" Click="Button_Cheque_Click">
+                    <TextBlock Text="Оплатить" Style="{StaticResource Style_LabelsFoodType}"/>
                 </Button>
                 <Separator Background="Black" Margin="10 3" />
                 <!--<Button Style="{StaticResource Style_ButtonFoodType}">

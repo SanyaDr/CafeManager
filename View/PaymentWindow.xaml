@@ -1,0 +1,23 @@
+﻿<Window x:Class="CafeManager3.View.PaymentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CafeManager3.View"
+        mc:Ignorable="d"
+        Title="PaymentWindow" Height="450" Width="800"
+        MinWidth="620">
+    <ScrollViewer>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Width="600">
+            <Label Content="Оплата" FontSize="25"/>
+            <Label Content="Ваш заказ:" FontSize="12"/>
+            <StackPanel x:Name="StackPanel_Cheque" HorizontalAlignment="Center">
+                <Border Height="55">
+                    <Image Source="\Media\BurgerIcon.png"/>
+                </Border>
+            </StackPanel>
+            <Button Content="Оплатить" Background="Green" Foreground="White" FontSize="16" Margin="0 10" Height="40"/>
+
+        </StackPanel>
+    </ScrollViewer>
+</Window>
